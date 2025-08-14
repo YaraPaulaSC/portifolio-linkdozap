@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Portifólio - Link do Zap</title>
+</head>
+<body>
+    <header>
+        <img src="img/perfil.jpg" width="250vh" alt="eu">
+        <br>
+        <h1>LINK DO ZAP</h1>
+
+        <h2>Cantor</h2>
+
+        <nav>
+            <a href="#apresentacao">Sinopse</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#trabalhos">Álbuns</a>
+        </nav>
+
+        <div id="apresentacao">
+            <div class="apresentacao-bg"></div>
+            <h3><a name="apresentacao"></a>SINOPSE:</h3>
+            <p>As composições do Link do Zap geram conexão com o público, principalmente os mais jovens, que se identificam com as músicas sobre decepções amorosas e frustração com a vida. Mas Link do Zap também aborda questões mais sérias em seu trabalho, como o vício em drogas e a automutilação, trazendo a sua experiência para o centro da discussão.</p>
+        </div>
+
+    </header>
+
+    <main>
+        <a name="habilidades"></a>
+<section id="skills">
+            <h1>HABILIDADES</h1>
+            <div class="skills-bg"></div>
+        
+                    <li>Cantar.</li>
+                </ul>
+            </div>
+        </section>
+            <a name="trabalhos"></a>
+        <section id="works">
+            <div class="works-bg"></div>
+            <h1>Álbuns</h1>
+            <ul>
+                <li>
+                    <a href="https://open.spotify.com/album/0fXovEjJ3Gh4qaIIYyklBL?si=5NhaefvpTzaSYWNcdOgjvg" target="_blank">Kalledy</a>
+                </li>
+                <li>
+                    <a href="https://open.spotify.com/album/0ZwvFgHfUMm9ABLpoP6Hrx?si=_WY0nxY8REmZ-_QN8HnA1g" target="_blank" >Histórias de kebrada para pessoas malcriadas</a>
+                </li>
+                <li>
+                    <a href="https://open.spotify.com/album/3UjaJRBHx7Zf2j65TLtJJy?si=3kWW1YlxQPidUqMztDjvsQ" target="_blank">Kebrada Boyz </a>
+            </ul>
+        </section>
+
+        <footer>
+            <h1>©Link do Zap</h1>
+            <p>Instagram</p>
+            <a href="https://www.instagram.com/linkdozap?igsh=MTFseWk3dTY3MnZnNw==" target="_blank" ><img src="img/instagram-logo-png_seeklogo-306290.png" width="30px" alt="instagram">: @linkdozap</a>
+        </footer>
+
+        <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX + 'px';
+            const y = e.clientY + 'px';
+            document.body.style.setProperty('--x', x);
+            document.body.style.setProperty('--y', y);
+        });
+
+        // Animação fade-in/fade-out para imagem de fundo da apresentação
+        function toggleApresentacaoBg(entries) {
+            entries.forEach(entry => {
+                const apresentacao = document.getElementById('apresentacao');
+                if (entry.isIntersecting) {
+                    apresentacao.classList.add('in-view');
+                } else {
+                    apresentacao.classList.remove('in-view');
+                }
+            });
+        }
+        const observer = new IntersectionObserver(toggleApresentacaoBg, { threshold: 0.5 });
+        observer.observe(document.getElementById('apresentacao'));
+
+        function toggleInView(entries, el) {
+            entries.forEach(entry => {
+                if (!el) return;
+                if (entry.isIntersecting) {
+                    el.classList.add('in-view');
+                } else {
+                    el.classList.remove('in-view');
+                }
+            });
+        }
+        const apresentacaoEl = document.getElementById('apresentacao');
+        if (apresentacaoEl) {
+            const observer = new IntersectionObserver((entries) => toggleInView(entries, apresentacaoEl), { threshold: 0.5 });
+            observer.observe(apresentacaoEl);
+        }
+        const skillsEl = document.getElementById('skills');
+        if (skillsEl) {
+            const observerSkills = new IntersectionObserver((entries) => toggleInView(entries, skillsEl), { threshold: 0.5 });
+            observerSkills.observe(skillsEl);
+        }
+
+        // Observa works e controla áudio
+        const worksEl = document.getElementById('works');
+        
+        if (worksEl) {
+            const observerWorks = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        worksEl.classList.add('in-view');
+                    } else {
+                        worksEl.classList.remove('in-view');
+                    }
+                });
+            }, { threshold: 0.5 });
+            observerWorks.observe(worksEl);
+        }
+        </script>
+</body>
+</html>
